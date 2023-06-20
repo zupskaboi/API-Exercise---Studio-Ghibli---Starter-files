@@ -4,6 +4,7 @@ const APIController = (function () {
     const clientSecret = 'a48ca8d2c25f4ce69baddcc75dbbd669';
 
     //private methods
+    //Hier heb ik de functies om de spotify data op te halen. De data die ik ophaal zijn: de Token en de genres van spotify.
     const _getToken = async () => {
 
         const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -41,7 +42,7 @@ const APIController = (function () {
 
 const UIController = (function () {
 
-    //object to hold references to html selectors
+    //Een object dat ervoor zorgt dat de data naar de juiste html selectors gaan.
     const DOMElements = {
         selectGenre: '#select_genre',
         hfToken: '#hidden_token'
@@ -50,14 +51,14 @@ const UIController = (function () {
     //public methods
     return {
 
-        //method to get input fields
+        //Hier zoek ik naar de input veld voor de genre.
         inputField() {
             return {
                 genre: document.querySelector(DOMElements.selectGenre)
             }
         },
 
-        //need methods to create select list option
+        //Hier maak ik het lijstje voor de data
         createGenre(text, value) {
             const html = `<option value="${value}">${text}</option>`;
             document.querySelector(DOMElements.selectGenre).insertAdjacentHTML('beforeend', html);
@@ -83,9 +84,9 @@ const APPController = (function (UICtrl, APICtrl) {
         const token = await APICtrl.getToken();
 
         UICtrl.storeToken(token);
-        //get the genres
+        //Hier krijg ik de genre data met behulp van het Token
         const genres = await APICtrl.getGenres(token);
-        //populate our genres select element
+        //Hier stop ik de data in de lijst element
         genres.forEach(element => UICtrl.createGenre(element.name, element.id));
     }
 
