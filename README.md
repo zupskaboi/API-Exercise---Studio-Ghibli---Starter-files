@@ -18,6 +18,8 @@ Het tonen van de genres met behulp van DOM
 ## Het gebruiken van de app
 Je kan de repository clonen in je eigen omgeving via visual studio code. Met de live server plugin kun je snel een eigen locale server gebruiken en dan word de app meteen getoont met de api data.
 
+Verder heb ik een online omgeving gemaakt om de app snel te kunnen tonen: https://api-exercise-studio-ghibli-starter-files.vercel.app/
+
 ## Bronnen
 https://www.youtube.com/watch?v=0dmS0He_czs
 
